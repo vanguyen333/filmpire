@@ -1,5 +1,6 @@
 node version: 16.20.0
 Navigation Bar: 13:10
+run the project: npm start
 // install eslint
 npm install -g eslint
 npm uninstall -g eslint
