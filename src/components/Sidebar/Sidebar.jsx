@@ -12,8 +12,16 @@ import {
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/styles";
 
-const Sibar = () => {
-  return <div>Sibar</div>;
+import useStyles from "./styles";
+
+const Sibar = ({ setMobileOpen }) => {
+  const theme = useTheme();
+  const classes = useStyles();
+  return (
+    <>
+      <Link to="/" className={classes.imageLink}></Link>
+    </>
+  );
 };
 
 export default Sibar;
