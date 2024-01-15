@@ -70,6 +70,12 @@ const NavBar = () => {
           {isMobile && "Search ..."}
         </Toolbar>
       </AppBar>
+      {/* sidebar */}
+      <div>
+        <nav className={classes.drawer}>
+          {isMobile ? <Drawer></Drawer> : <Drawer></Drawer>}
+        </nav>
+      </div>
     </>
   );
 };

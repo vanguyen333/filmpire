@@ -1,5 +1,5 @@
 node version: 16.20.0
-Navigation Bar: 13:10
+SideBar: 1:46
 run the project: npm start
 // install eslint
 npm install -g eslint
