@@ -1,6 +1,12 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+node version: 16.20.0
+SideBar: 11:47
+run the project: npm start
+// install eslint
+npm install -g eslint
+npm uninstall -g eslint
+i dont use eslint in this project
+//intall packages
+npm install @alan-ai/alan-sdk-web @mui/icons-material @mui/material @mui/styles @reduxjs/toolkit @axios react-redux
 
 ## Available Scripts
 
