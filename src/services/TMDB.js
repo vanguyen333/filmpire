@@ -15,3 +15,5 @@ export const tmdbApi = createApi({
 });
 
 export const {useGetMoviesQuery} = tmdbApi;
+
+
