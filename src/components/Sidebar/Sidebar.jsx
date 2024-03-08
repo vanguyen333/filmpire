@@ -5,6 +5,7 @@ import { useTheme } from '@mui/styles';
 
 import { useGetGenresQuery } from '../../services/TMDB';
 import useStyles from './styles';
+import genreIcons from '../../assets/genres';
 
 const categories = [
   {label: 'Popular', value :'popular'},
@@ -12,12 +13,12 @@ const categories = [
   {label: 'Upcoming', value :'upcoming'},
 
 ]
-const demoCategories = [
-{label: 'Comedy', value :'comedy'},
-{label: 'Action', value :'action'},
-{label: 'Horror', value :'horror'},
-{label: 'Animation', value :'animation'},
-]
+// const demoCategories = [
+// {label: 'Comedy', value :'comedy'},
+// {label: 'Action', value :'action'},
+// {label: 'Horror', value :'horror'},
+// {label: 'Animation', value :'animation'},
+// ]
 
 
 const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
@@ -41,7 +42,24 @@ const Sidebar = ({setMobileOpen}) => {
     <Divider/>
     <List>
       <ListSubheader>Categories</ListSubheader>
-
+      {categories.map(({label,value})=>(
+        <Link key={label} className={classes.links} to='/'>
+          <ListItemButton onClick={()=>{}} button>
+            <ListItemIcon>
+              <img 
+              src={genreIcons[label.toLowerCase()]} 
+              className={classes.genreImages} 
+              height={30} 
+              alt="genre icons"/>
+            </ListItemIcon>
+            <ListItemText primary={label}/>
+          </ListItemButton>
+        </Link>
+      ))}
+     {/* Genres */}
+    </List>
+    <List>
+      <ListSubheader>Genres</ListSubheader>
       {isFetching ? (
         <Box dixplay="flex" justifyContent='center'>
         <CircularProgress />
@@ -49,32 +67,14 @@ const Sidebar = ({setMobileOpen}) => {
       ) : data.genres.map(({name,id})=>(
         <Link key={name} className={classes.links} to='/'>
           <ListItemButton onClick={()=>{}} button>
-            {/* <ListItemIcon>
+            <ListItemIcon>
               <img 
-              src={redLogo} 
+              src={genreIcons[name.toLowerCase()]} 
               className={classes.genreImages} 
               height={30} 
-              alt="abc"/>
-            </ListItemIcon> */}
+              alt="genre icons"/>
+            </ListItemIcon>
             <ListItemText primary={name}/>
-          </ListItemButton>
-        </Link>
-        
-      ))}
-    </List>
-    <List>
-      <ListSubheader>Genres</ListSubheader>
-      {demoCategories.map(({label,value})=>(
-        <Link key={value} className={classes.links} to='/'>
-          <ListItemButton onClick={()=>{}} button>
-            {/* <ListItemIcon>
-              <img 
-              src={redLogo} 
-              className={classes.genreImages} 
-              height={30} 
-              alt="abc"/>
-            </ListItemIcon> */}
-            <ListItemText primary={label}/>
           </ListItemButton>
         </Link>
         
