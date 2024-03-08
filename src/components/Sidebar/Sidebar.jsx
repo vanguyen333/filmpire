@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
-import {Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress } from '@mui/material';
+import {Divider, List, ListItem, ListItemText, ListSubheader, ListItemIcon, Box, CircularProgress, ListItemButton } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
 
+import { useGetGenresQuery } from '../../services/TMDB';
 import useStyles from './styles';
 
 const categories = [
@@ -25,6 +26,8 @@ const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48
 const Sidebar = ({setMobileOpen}) => {
     const theme = useTheme();
     const classes = useStyles();
+    const {data,isFetching} = useGetGenresQuery();
+    console.log(data);
 
   return (
    <>
@@ -38,18 +41,23 @@ const Sidebar = ({setMobileOpen}) => {
     <Divider/>
     <List>
       <ListSubheader>Categories</ListSubheader>
-      {categories.map(({label,value})=>(
-        <Link key={value} className={classes.links} to='/'>
-          <ListItem onClick={()=>{}} button>
-            <ListItemIcon>
-              {/* <img 
+
+      {isFetching ? (
+        <Box dixplay="flex" justifyContent='center'>
+        <CircularProgress />
+        </Box>
+      ) : data.genres.map(({name,id})=>(
+        <Link key={name} className={classes.links} to='/'>
+          <ListItemButton onClick={()=>{}} button>
+            {/* <ListItemIcon>
+              <img 
               src={redLogo} 
               className={classes.genreImages} 
               height={30} 
-              alt="abc"/> */}
-            </ListItemIcon>
-            <ListItemText primary={label}/>
-          </ListItem>
+              alt="abc"/>
+            </ListItemIcon> */}
+            <ListItemText primary={name}/>
+          </ListItemButton>
         </Link>
         
       ))}
@@ -58,16 +66,16 @@ const Sidebar = ({setMobileOpen}) => {
       <ListSubheader>Genres</ListSubheader>
       {demoCategories.map(({label,value})=>(
         <Link key={value} className={classes.links} to='/'>
-          <ListItem onClick={()=>{}} button>
-            <ListItemIcon>
-              {/* <img 
+          <ListItemButton onClick={()=>{}} button>
+            {/* <ListItemIcon>
+              <img 
               src={redLogo} 
               className={classes.genreImages} 
               height={30} 
-              alt="abc"/> */}
-            </ListItemIcon>
+              alt="abc"/>
+            </ListItemIcon> */}
             <ListItemText primary={label}/>
-          </ListItem>
+          </ListItemButton>
         </Link>
         
       ))}
